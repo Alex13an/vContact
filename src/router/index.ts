@@ -10,7 +10,7 @@ const router = createRouter({
       component: HomeView,
     },
     {
-      path: "/contact/",
+      path: "/:pathMatch(.*)*",
       redirect: { name: "home" },
     },
     {
