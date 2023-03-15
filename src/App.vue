@@ -13,9 +13,7 @@ import { Layout, LayoutHeader, LayoutContent, LayoutFooter } from "ant-design-vu
         <RouterView />
       </div>
     </LayoutContent>
-    <LayoutFooter style="position: absolute; left: 50%; transform: translateX(-50%); bottom: 10px">
-      An Alexandr ©2023 AX Technology
-    </LayoutFooter>
+    <LayoutFooter style="text-align: center"> An Alexandr ©2023 AX Technology </LayoutFooter>
   </Layout>
 </template>
 
@@ -25,24 +23,7 @@ import { Layout, LayoutHeader, LayoutContent, LayoutFooter } from "ant-design-vu
   font-size: 1.3rem;
 }
 
-.site-layout-content {
-  min-height: 280px;
-  padding: 24px;
-  background: #fff;
-}
-#components-layout-demo-top .logo {
-  float: left;
-  width: 120px;
-  height: 31px;
-  margin: 16px 24px 16px 0;
-  background: rgba(255, 255, 255, 0.3);
-}
-.ant-row-rtl #components-layout-demo-top .logo {
-  float: right;
-  margin: 16px 0 16px 24px;
-}
-
-[data-theme="dark"] .site-layout-content {
-  background: #141414;
+.layout {
+  min-height: 100vh;
 }
 </style>

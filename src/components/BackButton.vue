@@ -3,7 +3,7 @@ import { ArrowLeftOutlined } from "@ant-design/icons-vue";
 </script>
 
 <template>
-  <ArrowLeftOutlined @click="$router.back" class="arrow" />
+  <ArrowLeftOutlined @click="$router.go(-1)" class="arrow" />
 </template>
 
 <style lang="scss" scoped>
