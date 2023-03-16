@@ -6,7 +6,7 @@ export interface Filter {
 }
 
 export interface Contact {
-  id: number;
+  id?: number;
   name: string;
   phone: string;
   email: string;

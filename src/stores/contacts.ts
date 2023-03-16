@@ -10,6 +10,10 @@ export const useContactsStore = defineStore("contacts", () => {
   const contacts = ref<Contact[]>([]);
 
   const getContacts = async () => {
+    if (filtersStore.filters.length) {
+      getFilteredContacts();
+      return;
+    }
     const res = await mockApi.getContacts();
     contacts.value = [...res];
   };
@@ -17,8 +21,6 @@ export const useContactsStore = defineStore("contacts", () => {
   const getFilteredContacts = async () => {
     const res = await mockApi.getFilteredContacts(filtersStore.filters, filtersStore.isFilterStrict);
     contacts.value = [...res];
-
-    return res;
   };
 
   watch(
@@ -39,5 +41,17 @@ export const useContactsStore = defineStore("contacts", () => {
     return contact;
   };
 
-  return { contacts, getContacts, getFilteredContacts, getContact };
+  const saveContact = async (contact: Contact) => {
+    await mockApi.saveContact(contact);
+  };
+
+  const deleteContact = async (id: number) => {
+    await mockApi.deleteContact(id);
+  };
+
+  const addContact = async (contact: Contact) => {
+    await mockApi.addContact(contact);
+  };
+
+  return { contacts, getContacts, getFilteredContacts, getContact, saveContact, deleteContact, addContact };
 });

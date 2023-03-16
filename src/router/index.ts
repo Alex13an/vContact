@@ -17,6 +17,11 @@ const router = createRouter({
       path: "/contact/:id",
       component: () => import("@/views/ContactView.vue"),
     },
+    {
+      path: "/contact/new",
+      name: "newContact",
+      component: () => import("@/views/NewContactView.vue"),
+    },
   ],
 });
 

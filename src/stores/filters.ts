@@ -7,6 +7,16 @@ export const useFiltersStore = defineStore("filters", () => {
   const isFilterStrict = ref<boolean>(false);
 
   const setStrictMode = (mode: boolean): void => {
+    if (mode === true) {
+      filters.value = filters.value.filter((f, index, self) => {
+        if (f.type === "tags") {
+          return true;
+        }
+        return self.findIndex((i) => i.type === f.type) === index;
+      });
+    } else {
+      filters.value = [...filters.value];
+    }
     isFilterStrict.value = mode;
   };
 

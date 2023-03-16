@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import { Table, Tag, Divider, TypographyTitle } from "ant-design-vue";
-import { DownOutlined } from "@ant-design/icons-vue";
+import { Table, Tag } from "ant-design-vue";
 import { useContactsStore } from "@/stores/contacts";
 import FilterInput from "@/components/FilterInput.vue";
 import FilterTags from "@/components/FilterTags.vue";
+import HomeTitle from "@/components/HomeTitle.vue";
 import { onMounted } from "vue";
 
 const columns = [
+  // Antd table colums
   {
     name: "Name",
     dataIndex: "name",
@@ -39,7 +40,7 @@ onMounted(() => {
 <template>
   <div>
     <div style="display: flex; align-items: center; justify-content: space-between">
-      <TypographyTitle :level="3">Contacts</TypographyTitle>
+      <HomeTitle />
       <FilterInput />
     </div>
     <FilterTags />
@@ -63,19 +64,6 @@ onMounted(() => {
             <Tag v-for="tag in record.tags" :key="tag">
               {{ tag.toUpperCase() }}
             </Tag>
-          </span>
-        </template>
-
-        <template v-else-if="column.key === 'action'">
-          <span>
-            <a>Invite 一 {{ record.name }}</a>
-            <Divider type="vertical" />
-            <a>Delete</a>
-            <Divider type="vertical" />
-            <a class="ant-dropdown-link">
-              More actions
-              <DownOutlined />
-            </a>
           </span>
         </template>
       </template>

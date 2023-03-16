@@ -25,30 +25,46 @@ const hardcodeList: Contact[] = [
   },
 ];
 
+const API_DELAY = 100;
+
 export const useMockApiStore = defineStore("mockApi", () => {
+  const getMockApiContacts = (): Contact[] => {
+    const localContacts = localStorage.getItem("contacts");
+    if (localContacts) {
+      return JSON.parse(localContacts);
+    }
+    return hardcodeList;
+  };
+
+  const setMockApiContacts = (contacts: Contact[]) => {
+    localStorage.setItem("contacts", JSON.stringify(contacts));
+  };
+
   const getContacts = (): Promise<Contact[]> => {
     return new Promise((resolve) => {
       setTimeout(() => {
-        resolve(hardcodeList);
-      }, 200);
+        const res = getMockApiContacts();
+        setMockApiContacts(res);
+        resolve(res);
+      }, API_DELAY);
     });
   };
 
   const getContact = (id: number): Promise<Contact | null> => {
     return new Promise((resolve) => {
       setTimeout(() => {
-        const contacts = hardcodeList;
+        const contacts = getMockApiContacts();
         const contact = contacts.find((c) => c.id === id) || null;
 
         resolve(contact);
-      }, 100);
+      }, API_DELAY);
     });
   };
 
   const getFilteredContacts = (filters: Filter[], isStrict: boolean): Promise<Contact[]> => {
     return new Promise((resolve) => {
       setTimeout(() => {
-        const contacts = hardcodeList;
+        const contacts = getMockApiContacts();
 
         if (!isStrict) {
           const res = contacts.filter((contact) => {
@@ -88,9 +104,71 @@ export const useMockApiStore = defineStore("mockApi", () => {
           return false;
         });
         resolve(res);
-      }, 100);
+      }, API_DELAY);
     });
   };
 
-  return { getContacts, getContact, getFilteredContacts };
+  const saveContact = (contact: Contact): Promise<Contact> => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const contacts = getMockApiContacts();
+
+        if (!contacts.find((c) => c.id === contact.id)) {
+          contacts.push(contact);
+          setMockApiContacts(contacts);
+        } else {
+          setMockApiContacts(
+            contacts.map((c) => {
+              if (c.id === contact.id) {
+                return contact;
+              }
+              return c;
+            })
+          );
+        }
+
+        resolve(contact);
+      }, API_DELAY);
+    });
+  };
+
+  const addContact = (contact: Contact): Promise<Contact> => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const contacts = getMockApiContacts();
+        const newId = contacts.length + 1;
+
+        contacts.push({ ...contact, id: newId });
+        setMockApiContacts(contacts);
+
+        resolve(contact);
+      }, API_DELAY);
+    });
+  };
+
+  const deleteContact = (id: number): Promise<number> => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const contacts = getMockApiContacts();
+
+        if (!contacts.find((c) => c.id === id)) {
+          resolve(0);
+          return;
+        }
+
+        setMockApiContacts(
+          contacts.filter((c) => {
+            if (c.id === id) {
+              return false;
+            }
+            return true;
+          })
+        );
+
+        resolve(id);
+      }, API_DELAY);
+    });
+  };
+
+  return { getContacts, getContact, getFilteredContacts, setMockApiContacts, saveContact, deleteContact, addContact };
 });

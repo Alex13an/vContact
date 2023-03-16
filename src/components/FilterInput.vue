@@ -49,7 +49,7 @@ const onToggleStrictMode = () => {
       <template #title>
         <span>Strict Search</span>
       </template>
-      <Checkbox v-model="store.isFilterStrict" @change="onToggleStrictMode" />
+      <Checkbox :checked="store.isFilterStrict" @change="onToggleStrictMode" />
     </Tooltip>
   </div>
 </template>
