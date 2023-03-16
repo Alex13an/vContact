@@ -9,7 +9,7 @@ import { ArrowLeftOutlined } from "@ant-design/icons-vue";
 <style lang="scss" scoped>
 .arrow {
   position: absolute;
-  left: -3rem;
+  left: -3.5rem;
   top: 1rem;
   color: #1890ff;
   margin-right: 1rem;

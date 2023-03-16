@@ -2,26 +2,41 @@ import type { Contact, Filter } from "@/models/types";
 import { defineStore } from "pinia";
 
 const hardcodeList: Contact[] = [
+  // all data is fake
   {
     id: 1,
     name: "Nodirbek Abdusattorov",
     phone: "+998 (99) 322-22-28",
     email: "iLoveCookies@gmail.com",
-    tags: ["bro", "goodman", "gym"],
+    tags: ["bro", "school", "gym"],
   },
   {
     id: 2,
     name: "Jamila Baghirova",
-    phone: "+998 (99) 322-22-28",
+    phone: "+998 (73) 228-32-22",
     email: "beynalxalqs@gmail.com",
-    tags: ["mom", "family", "food"],
+    tags: ["mom", "family", "holiday"],
   },
   {
     id: 3,
     name: "Amel Karboul",
-    phone: "+998 (99) 322-22-28",
+    phone: "+998 (70) 999-34-15",
     email: "office@edufundmea.org",
-    tags: ["partner", "work", "bro"],
+    tags: ["partner", "work", "bro", "love"],
+  },
+  {
+    id: 4,
+    name: "Pavel Ruchkin",
+    phone: "+998 (88) 444-17-15",
+    email: "dihinor864@loongwin.com",
+    tags: ["manager", "boss", "gym"],
+  },
+  {
+    id: 5,
+    name: "Maxim Smolentsev",
+    phone: "+998 (95) 453-12-19",
+    email: "threemelons@temp40.com",
+    tags: ["dad", "family"],
   },
 ];
 
