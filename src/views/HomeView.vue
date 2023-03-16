@@ -45,7 +45,7 @@ onMounted(() => {
     </div>
     <FilterTags />
 
-    <Table :columns="columns" :data-source="store.contacts">
+    <Table :columns="columns" :data-source="store.contacts" :scroll="{ x: 1000 }">
       <template #headerCell="{ column }">
         <template v-if="column.key === 'name'">
           <span> Name </span>
