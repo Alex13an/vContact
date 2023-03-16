@@ -8,7 +8,7 @@ import { Layout, LayoutHeader, LayoutContent, LayoutFooter } from "ant-design-vu
     <LayoutHeader>
       <RouterLink class="title" to="/">vContact</RouterLink>
     </LayoutHeader>
-    <LayoutContent style="padding: 0 50px">
+    <LayoutContent class="content">
       <div :style="{ background: '#fff', padding: '24px', minHeight: '280px' }">
         <RouterView />
       </div>
@@ -25,5 +25,15 @@ import { Layout, LayoutHeader, LayoutContent, LayoutFooter } from "ant-design-vu
 
 .layout {
   min-height: 100vh;
+}
+
+.content {
+  padding: 0 50px;
+}
+
+@media only screen and (max-width: 600px) {
+  .content {
+    padding: 0;
+  }
 }
 </style>

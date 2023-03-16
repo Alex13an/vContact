@@ -39,7 +39,7 @@ onMounted(() => {
 
 <template>
   <div>
-    <div style="display: flex; align-items: center; justify-content: space-between">
+    <div class="filters">
       <HomeTitle />
       <FilterInput />
     </div>
@@ -70,4 +70,17 @@ onMounted(() => {
     </Table>
   </div>
 </template>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@media only screen and (max-width: 600px) {
+  .filters {
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+  }
+}
+</style>
